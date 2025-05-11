@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #b6ce6e, #5bc79a);
+    padding: 10px;
+}
+
+.todo-app{
+    width: 100%;
+    max-width: 540px;
+    background: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+
+.todo-app h2{
+    color: #002765;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.todo-app h2 img{
+    width: 30px;
+    margin-left:10px;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #edeef0;
+  border-radius:30px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+input{
+  /* 让 input 自适应拉伸，填满剩余宽度。 */
+    flex: 1;
+    border: none;
+    /* 去掉 input 获得焦点时（比如点击时）出现的外轮廓光圈。 */
+    outline: none;
+    background: transparent;
+    padding: 10px;
+}
+
+button{
+  border:none;
+  outline: none;
+  padding: 16px 50px;
+  background: #ff5945;
+  /* 文字颜色 */
+  color: #fff;
+  /* 字体大小 */
+  font-size: 16px;
+  /* 当鼠标悬停在按钮上时，光标变成手型，提示用户这个元素是可以点击的。 */
+  cursor: pointer;
+  /* 设置按钮的圆角为40像素，这样按钮的边角会变得非常圆滑。 */
+  border-radius: 40px;
+}
+
+ul li{
+  /* 取消默认的列表样式，也就是去掉了每个列表项前面的圆点、
+  方块或者其他符号。这通常用于自定义列表项的外观。 */
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;
+  /* 禁止用户选中列表项的文本。 */
+  user-select: none;
+  cursor: pointer;
+
+  position:relative;
+  /* 创建定位基准：当你使用 position: absolute; 
+  的元素时，relative 常用来设定其parent元素的定位参考点。 */
+}
+
+/* 这段 CSS 是用来给每个 ul li 元素添加
+自定义图标的，它使用了 ::before 伪元素来插入一个图标。 */
+ul li::before{
+  /* 表示插入一个空的内容，也就是说伪元素本身没有文字内容，
+  但它会创建一个占位符来容纳后面的样式（比如背景图或形状）。 */
+  content: '';
+  /* 设置伪元素的位置为绝对定位。 */
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  /* 将伪元素的边角设置为50%，这样它的外观就变成了一个圆形。 */
+  border-radius: 50%;
+  /* 设置伪元素的背景图为 images/unchecked.png，
+  通常这是一个未选中的复选框图标。
+这个图标将会显示在伪元素的圆形区域内。 */
+  background-image: url(image/unchecked.png);
+  /* 让背景图像覆盖整个元素的背景区域，同时保持图像的宽高比例。 */
+  background-size: cover;
+  /* 使背景图像居中显示，无论是水平方向还是垂直方向。 */
+  background-position: center;
+
+  /* 这个属性需要和 position（比如 relative, absolute, fixed）
+  一起使用。如果元素的定位为 relative 或 absolute，
+  那么 top: 12px; 会将元素的顶部向下偏移12像素。 */
+  top: 12px;
+  left: 8px;
+}
+
+ul li.checked{
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li.checked::before{
+  background-image: url(image/checked.png);
+}
+
+ul li span{
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #555;
+  /* 设置文本的行高为 40px。 */
+  line-height: 40px;
+  /* 将文本水平居中显示。 */
+  text-align: center;
+}
+/* 添加 悬停效果（hover） */
+ul li span:hover{
+  background: #edeef0;
+  border-radius: 50%;
+}
